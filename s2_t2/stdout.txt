@@ -1,0 +1,91 @@
+[2021-10-26 00:40:28,19] [info] Running with database db.url = jdbc:hsqldb:mem:b9159288-7a9a-434d-8f3c-80754b00eff7;shutdown=false;hsqldb.tx=mvcc
+Skipping auto-registration
+[2021-10-26 00:40:30,98] [warn] Skipping auto-registration
+[2021-10-26 00:40:35,23] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
+[2021-10-26 00:40:35,24] [info] [RenameWorkflowOptionsInMetadata] 100%
+[2021-10-26 00:40:36,58] [info] Running with database db.url = jdbc:hsqldb:mem:e060cf39-9a77-4d54-88ef-c085f239338a;shutdown=false;hsqldb.tx=mvcc
+Skipping auto-registration
+[2021-10-26 00:40:36,85] [warn] Skipping auto-registration
+[2021-10-26 00:40:37,82] [info] Slf4jLogger started
+[2021-10-26 00:40:38,07] [info] Workflow heartbeat configuration:
+{
+  "cromwellId" : "cromid-5bcb75f",
+  "heartbeatInterval" : "2 minutes",
+  "ttl" : "10 minutes",
+  "failureShutdownDuration" : "5 minutes",
+  "writeBatchSize" : 10000,
+  "writeThreshold" : 10000
+}
+[2021-10-26 00:40:38,19] [info] Metadata summary refreshing every 1 second.
+[2021-10-26 00:40:38,19] [info] No metadata archiver defined in config
+[2021-10-26 00:40:38,19] [info] No metadata deleter defined in config
+[2021-10-26 00:40:38,21] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-10-26 00:40:38,23] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-10-26 00:40:38,32] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
+[2021-10-26 00:40:38,41] [info] JobExecutionTokenDispenser - Distribution rate: 20 per 10 seconds.
+[2021-10-26 00:40:38,55] [info] SingleWorkflowRunnerActor: Version 70
+[2021-10-26 00:40:38,55] [info] SingleWorkflowRunnerActor: Submitting workflow
+[2021-10-26 00:40:38,65] [info] Unspecified type (Unspecified version) workflow 61a170f8-8a8c-4997-926a-eeebac363a83 submitted
+[2021-10-26 00:40:38,67] [info] SingleWorkflowRunnerActor: Workflow submitted 61a170f8-8a8c-4997-926a-eeebac363a83
+[2021-10-26 00:40:38,69] [info] 1 new workflows fetched by cromid-5bcb75f: 61a170f8-8a8c-4997-926a-eeebac363a83
+[2021-10-26 00:40:38,69] [info] WorkflowManagerActor: Starting workflow 61a170f8-8a8c-4997-926a-eeebac363a83
+[2021-10-26 00:40:38,71] [info] WorkflowManagerActor: Successfully started WorkflowActor-61a170f8-8a8c-4997-926a-eeebac363a83
+[2021-10-26 00:40:38,71] [info] Retrieved 1 workflows from the WorkflowStoreActor
+[2021-10-26 00:40:38,73] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
+[2021-10-26 00:40:38,91] [info] MaterializeWorkflowDescriptorActor [61a170f8]: Parsing workflow as WDL draft-2
+[2021-10-26 00:40:39,84] [info] MaterializeWorkflowDescriptorActor [61a170f8]: Call-to-Backend assignments: helloWorkflow.helloTask -> Local
+[2021-10-26 00:40:41,22] [info] WorkflowExecutionActor-61a170f8-8a8c-4997-926a-eeebac363a83 [61a170f8]: Starting helloWorkflow.helloTask
+[2021-10-26 00:40:43,41] [info] Not triggering log of token queue status. Effective log interval = None
+[2021-10-26 00:40:48,43] [info] Assigned new job execution tokens to the following groups: 61a170f8: 1
+[2021-10-26 00:40:48,58] [info] BackgroundConfigAsyncJobExecutionActor [61a170f8helloWorkflow.helloTask:NA:1]: echo "Hello World!"
+[2021-10-26 00:40:48,68] [info] BackgroundConfigAsyncJobExecutionActor [61a170f8helloWorkflow.helloTask:NA:1]: executing: /bin/bash /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/script
+[2021-10-26 00:40:53,24] [info] BackgroundConfigAsyncJobExecutionActor [61a170f8helloWorkflow.helloTask:NA:1]: job id: 2783
+[2021-10-26 00:40:53,24] [info] BackgroundConfigAsyncJobExecutionActor [61a170f8helloWorkflow.helloTask:NA:1]: Status change from - to Done
+[2021-10-26 00:40:54,51] [info] WorkflowExecutionActor-61a170f8-8a8c-4997-926a-eeebac363a83 [61a170f8]: Workflow helloWorkflow complete. Final Outputs:
+{
+  "helloWorkflow.helloTask.out": "Hello World!"
+}
+[2021-10-26 00:40:58,27] [info] WorkflowManagerActor: Workflow actor for 61a170f8-8a8c-4997-926a-eeebac363a83 completed with status 'Succeeded'. The workflow will be removed from the workflow store.
+[2021-10-26 00:41:00,74] [info] SingleWorkflowRunnerActor workflow finished with status 'Succeeded'.
+{
+  "outputs": {
+    "helloWorkflow.helloTask.out": "Hello World!"
+  },
+  "id": "61a170f8-8a8c-4997-926a-eeebac363a83"
+}
+[2021-10-26 00:41:03,28] [info] Workflow polling stopped
+[2021-10-26 00:41:03,30] [info] 0 workflows released by cromid-5bcb75f
+[2021-10-26 00:41:03,30] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
+[2021-10-26 00:41:03,31] [info] Aborting all running workflows.
+[2021-10-26 00:41:03,31] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
+[2021-10-26 00:41:03,32] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
+[2021-10-26 00:41:03,32] [info] WorkflowStoreActor stopped
+[2021-10-26 00:41:03,32] [info] JobExecutionTokenDispenser stopped
+[2021-10-26 00:41:03,32] [info] WorkflowLogCopyRouter stopped
+[2021-10-26 00:41:03,32] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
+[2021-10-26 00:41:03,32] [info] WorkflowManagerActor: All workflows finished
+[2021-10-26 00:41:03,32] [info] WorkflowManagerActor stopped
+[2021-10-26 00:41:03,59] [info] Connection pools shut down
+[2021-10-26 00:41:03,59] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
+[2021-10-26 00:41:03,59] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
+[2021-10-26 00:41:03,59] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
+[2021-10-26 00:41:03,59] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
+[2021-10-26 00:41:03,59] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
+[2021-10-26 00:41:03,59] [info] Shutting down IoProxy - Timeout = 1800 seconds
+[2021-10-26 00:41:03,60] [info] JobStoreActor stopped
+[2021-10-26 00:41:03,60] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
+[2021-10-26 00:41:03,60] [info] SubWorkflowStoreActor stopped
+[2021-10-26 00:41:03,60] [info] IoProxy stopped
+[2021-10-26 00:41:03,60] [info] DockerHashActor stopped
+[2021-10-26 00:41:03,61] [info] WriteMetadataActor Shutting down: 0 queued messages to process
+[2021-10-26 00:41:03,61] [info] KvWriteActor Shutting down: 0 queued messages to process
+[2021-10-26 00:41:03,61] [info] CallCacheWriteActor stopped
+[2021-10-26 00:41:03,62] [info] ServiceRegistryActor stopped
+[2021-10-26 00:41:03,68] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-10-26 00:41:03,68] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-10-26 00:41:03,69] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-10-26 00:41:03,69] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-10-26 00:41:03,70] [info] Database closed
+[2021-10-26 00:41:03,71] [info] Stream materializer shut down
+[2021-10-26 00:41:03,71] [info] WDL HTTP import resolver closed
+

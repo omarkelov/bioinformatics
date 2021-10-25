@@ -1,0 +1,37 @@
+#!/bin/bash
+
+cd /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution
+tmpDir=$(mkdir -p "/home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/tmp.bd1d5d15" && echo "/home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/tmp.bd1d5d15")
+
+export _JAVA_OPTIONS=-Djava.io.tmpdir="$tmpDir"
+export TMPDIR="$tmpDir"
+export HOME="$HOME"
+(
+cd /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution
+
+)
+out61a170f8="${tmpDir}/out.$$" err61a170f8="${tmpDir}/err.$$"
+mkfifo "$out61a170f8" "$err61a170f8"
+trap 'rm "$out61a170f8" "$err61a170f8"' EXIT
+touch '/home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/stdout' '/home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/stderr'
+tee '/home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/stdout' < "$out61a170f8" &
+tee '/home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/stderr' < "$err61a170f8" >&2 &
+(
+cd /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution
+
+
+echo "Hello World!"
+)  > "$out61a170f8" 2> "$err61a170f8"
+echo $? > /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/rc.tmp
+(
+# add a .file in every empty directory to facilitate directory delocalization on the cloud
+cd /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution
+find . -type d -exec sh -c '[ -z "$(ls -A '"'"'{}'"'"')" ] && touch '"'"'{}'"'"'/.file' \;
+)
+(
+cd /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution
+sync
+
+
+)
+mv /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/rc.tmp /home/oleg/bio2/cromwell/cromwell-executions/helloWorkflow/61a170f8-8a8c-4997-926a-eeebac363a83/call-helloTask/execution/rc
