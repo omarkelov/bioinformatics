@@ -1,0 +1,130 @@
+oleg@oleg-VirtualBox:~/bio2/1_3$ java -jar cromwell-70.jar run pipeline.wdl -i pipeline.json 
+[2021-11-02 04:46:44,58] [info] Running with database db.url = jdbc:hsqldb:mem:03a3ba6f-a4f6-44a9-b169-0c6275c9c8af;shutdown=false;hsqldb.tx=mvcc
+Skipping auto-registration
+[2021-11-02 04:46:47,73] [warn] Skipping auto-registration
+[2021-11-02 04:46:53,83] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
+[2021-11-02 04:46:53,84] [info] [RenameWorkflowOptionsInMetadata] 100%
+[2021-11-02 04:46:55,85] [info] Running with database db.url = jdbc:hsqldb:mem:55b73ea0-4d96-45a8-8eda-2af975a695ee;shutdown=false;hsqldb.tx=mvcc
+Skipping auto-registration
+[2021-11-02 04:46:56,13] [warn] Skipping auto-registration
+[2021-11-02 04:46:57,51] [info] Slf4jLogger started
+[2021-11-02 04:46:57,78] [info] Workflow heartbeat configuration:
+{
+  "cromwellId" : "cromid-6921f6c",
+  "heartbeatInterval" : "2 minutes",
+  "ttl" : "10 minutes",
+  "failureShutdownDuration" : "5 minutes",
+  "writeBatchSize" : 10000,
+  "writeThreshold" : 10000
+}
+[2021-11-02 04:46:57,91] [info] Metadata summary refreshing every 1 second.
+[2021-11-02 04:46:57,91] [info] No metadata archiver defined in config
+[2021-11-02 04:46:57,91] [info] No metadata deleter defined in config
+[2021-11-02 04:46:57,95] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-11-02 04:46:57,95] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-11-02 04:46:58,00] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
+[2021-11-02 04:46:58,19] [info] JobExecutionTokenDispenser - Distribution rate: 20 per 10 seconds.
+[2021-11-02 04:46:58,33] [info] SingleWorkflowRunnerActor: Version 70
+[2021-11-02 04:46:58,36] [info] SingleWorkflowRunnerActor: Submitting workflow
+[2021-11-02 04:46:58,53] [info] Unspecified type (Unspecified version) workflow cb50e8af-8c69-4684-92f8-ea4f0c2088e9 submitted
+[2021-11-02 04:46:58,57] [info] SingleWorkflowRunnerActor: Workflow submitted cb50e8af-8c69-4684-92f8-ea4f0c2088e9
+[2021-11-02 04:46:58,58] [info] 1 new workflows fetched by cromid-6921f6c: cb50e8af-8c69-4684-92f8-ea4f0c2088e9
+[2021-11-02 04:46:58,60] [info] WorkflowManagerActor: Starting workflow cb50e8af-8c69-4684-92f8-ea4f0c2088e9
+[2021-11-02 04:46:58,63] [info] WorkflowManagerActor: Successfully started WorkflowActor-cb50e8af-8c69-4684-92f8-ea4f0c2088e9
+[2021-11-02 04:46:58,63] [info] Retrieved 1 workflows from the WorkflowStoreActor
+[2021-11-02 04:46:58,70] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
+[2021-11-02 04:46:58,85] [info] MaterializeWorkflowDescriptorActor [cb50e8af]: Parsing workflow as WDL draft-2
+[2021-11-02 04:47:00,08] [info] MaterializeWorkflowDescriptorActor [cb50e8af]: Call-to-Backend assignments: hello.checkResult -> Local, hello.samtoolsTask -> Local, hello.fastqcTask -> Local, hello.indexTask -> Local, hello.flagstatPercentage -> Local
+[2021-11-02 04:47:02,45] [info] WorkflowExecutionActor-cb50e8af-8c69-4684-92f8-ea4f0c2088e9 [cb50e8af]: Starting hello.indexTask, hello.fastqcTask
+[2021-11-02 04:47:03,20] [info] Not triggering log of token queue status. Effective log interval = None
+[2021-11-02 04:47:08,22] [info] Assigned new job execution tokens to the following groups: cb50e8af: 2
+[2021-11-02 04:47:08,40] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.indexTask:NA:1]: minimap2 -d ref.mmi /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-indexTask/inputs/-1366123953/ref.fna
+minimap2 -a ref.mmi /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-indexTask/inputs/-1366123953/sra_data.fastq > output.sam
+[2021-11-02 04:47:08,40] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.fastqcTask:NA:1]: fastqc /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-fastqcTask/inputs/-1366123953/sra_data.fastq -o .
+[2021-11-02 04:47:08,43] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.indexTask:NA:1]: executing: /bin/bash /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-indexTask/execution/script
+[2021-11-02 04:47:08,43] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.fastqcTask:NA:1]: executing: /bin/bash /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-fastqcTask/execution/script
+[2021-11-02 04:47:13,05] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.fastqcTask:NA:1]: job id: 4021
+[2021-11-02 04:47:13,06] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.indexTask:NA:1]: job id: 4020
+[2021-11-02 04:47:13,06] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.indexTask:NA:1]: Status change from - to WaitingForReturnCode
+[2021-11-02 04:47:13,06] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.fastqcTask:NA:1]: Status change from - to WaitingForReturnCode
+[2021-11-02 04:49:04,40] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.indexTask:NA:1]: Status change from WaitingForReturnCode to Done
+[2021-11-02 04:49:08,59] [info] WorkflowExecutionActor-cb50e8af-8c69-4684-92f8-ea4f0c2088e9 [cb50e8af]: Starting hello.samtoolsTask
+[2021-11-02 04:49:18,21] [info] Assigned new job execution tokens to the following groups: cb50e8af: 1
+[2021-11-02 04:49:18,24] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.samtoolsTask:NA:1]: samtools flagstat /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-samtoolsTask/inputs/169918711/output.sam > flagstat.txt
+[2021-11-02 04:49:18,25] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.samtoolsTask:NA:1]: executing: /bin/bash /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-samtoolsTask/execution/script
+[2021-11-02 04:49:22,98] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.samtoolsTask:NA:1]: job id: 4123
+[2021-11-02 04:49:22,98] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.samtoolsTask:NA:1]: Status change from - to WaitingForReturnCode
+[2021-11-02 04:49:25,43] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.samtoolsTask:NA:1]: Status change from WaitingForReturnCode to Done
+[2021-11-02 04:49:26,94] [info] WorkflowExecutionActor-cb50e8af-8c69-4684-92f8-ea4f0c2088e9 [cb50e8af]: Starting hello.flagstatPercentage
+[2021-11-02 04:49:28,21] [info] Assigned new job execution tokens to the following groups: cb50e8af: 1
+[2021-11-02 04:49:28,22] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.flagstatPercentage:NA:1]: grep -oP '\d+\.\d+(?=%)' /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-flagstatPercentage/inputs/-1898473549/flagstat.txt
+[2021-11-02 04:49:28,32] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.flagstatPercentage:NA:1]: executing: /bin/bash /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-flagstatPercentage/execution/script
+[2021-11-02 04:49:32,97] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.flagstatPercentage:NA:1]: job id: 4152
+[2021-11-02 04:49:32,97] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.flagstatPercentage:NA:1]: Status change from - to Done
+[2021-11-02 04:49:34,08] [info] WorkflowExecutionActor-cb50e8af-8c69-4684-92f8-ea4f0c2088e9 [cb50e8af]: Starting hello.checkResult
+[2021-11-02 04:49:38,21] [info] Assigned new job execution tokens to the following groups: cb50e8af: 1
+[2021-11-02 04:49:38,22] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.checkResult:NA:1]: if (($(echo "88.57>90" | bc -l))); then
+  echo "OK"
+else
+  echo "Not OK" 
+fi
+[2021-11-02 04:49:38,25] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.checkResult:NA:1]: executing: /bin/bash /home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-checkResult/execution/script
+[2021-11-02 04:49:42,96] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.checkResult:NA:1]: job id: 4178
+[2021-11-02 04:49:42,96] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.checkResult:NA:1]: Status change from - to Done
+[2021-11-02 04:50:04,88] [info] BackgroundConfigAsyncJobExecutionActor [cb50e8afhello.fastqcTask:NA:1]: Status change from WaitingForReturnCode to Done
+[2021-11-02 04:50:06,74] [info] WorkflowExecutionActor-cb50e8af-8c69-4684-92f8-ea4f0c2088e9 [cb50e8af]: Workflow hello complete. Final Outputs:
+{
+  "hello.samtoolsTask.flagstat": "/home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-samtoolsTask/execution/flagstat.txt",
+  "hello.indexTask.sam": "/home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-indexTask/execution/output.sam",
+  "hello.fastqcTask.report": "/home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-fastqcTask/execution/sra_data_fastqc.html",
+  "hello.flagstatPercentage.percentage": "88.57",
+  "hello.checkResult.result": "Not OK"
+}
+[2021-11-02 04:50:07,98] [info] WorkflowManagerActor: Workflow actor for cb50e8af-8c69-4684-92f8-ea4f0c2088e9 completed with status 'Succeeded'. The workflow will be removed from the workflow store.
+[2021-11-02 04:50:17,33] [info] SingleWorkflowRunnerActor workflow finished with status 'Succeeded'.
+{
+  "outputs": {
+    "hello.samtoolsTask.flagstat": "/home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-samtoolsTask/execution/flagstat.txt",
+    "hello.indexTask.sam": "/home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-indexTask/execution/output.sam",
+    "hello.fastqcTask.report": "/home/oleg/bio2/1_3/cromwell-executions/hello/cb50e8af-8c69-4684-92f8-ea4f0c2088e9/call-fastqcTask/execution/sra_data_fastqc.html",
+    "hello.flagstatPercentage.percentage": "88.57",
+    "hello.checkResult.result": "Not OK"
+  },
+  "id": "cb50e8af-8c69-4684-92f8-ea4f0c2088e9"
+}
+[2021-11-02 04:50:18,05] [info] Workflow polling stopped
+[2021-11-02 04:50:18,06] [info] 0 workflows released by cromid-6921f6c
+[2021-11-02 04:50:18,07] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
+[2021-11-02 04:50:18,08] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
+[2021-11-02 04:50:18,09] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
+[2021-11-02 04:50:18,09] [info] Aborting all running workflows.
+[2021-11-02 04:50:18,10] [info] JobExecutionTokenDispenser stopped
+[2021-11-02 04:50:18,10] [info] WorkflowStoreActor stopped
+[2021-11-02 04:50:18,11] [info] WorkflowLogCopyRouter stopped
+[2021-11-02 04:50:18,11] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
+[2021-11-02 04:50:18,11] [info] WorkflowManagerActor: All workflows finished
+[2021-11-02 04:50:18,11] [info] WorkflowManagerActor stopped
+[2021-11-02 04:50:18,60] [info] Connection pools shut down
+[2021-11-02 04:50:18,61] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
+[2021-11-02 04:50:18,61] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
+[2021-11-02 04:50:18,61] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
+[2021-11-02 04:50:18,61] [info] SubWorkflowStoreActor stopped
+[2021-11-02 04:50:18,61] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
+[2021-11-02 04:50:18,61] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
+[2021-11-02 04:50:18,61] [info] Shutting down IoProxy - Timeout = 1800 seconds
+[2021-11-02 04:50:18,61] [info] JobStoreActor stopped
+[2021-11-02 04:50:18,61] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
+[2021-11-02 04:50:18,61] [info] WriteMetadataActor Shutting down: 0 queued messages to process
+[2021-11-02 04:50:18,61] [info] CallCacheWriteActor stopped
+[2021-11-02 04:50:18,61] [info] KvWriteActor Shutting down: 0 queued messages to process
+[2021-11-02 04:50:18,61] [info] IoProxy stopped
+[2021-11-02 04:50:18,62] [info] ServiceRegistryActor stopped
+[2021-11-02 04:50:18,62] [info] DockerHashActor stopped
+[2021-11-02 04:50:18,73] [info] Database closed
+[2021-11-02 04:50:18,73] [info] Stream materializer shut down
+[2021-11-02 04:50:18,73] [info] WDL HTTP import resolver closed
+[2021-11-02 04:50:18,75] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-11-02 04:50:18,75] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-11-02 04:50:18,75] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-11-02 04:50:18,75] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+
